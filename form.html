@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cápsulas VIG Power - Green World | Solução Natural</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+ 
+    <link rel="shortcut icon" href="./acessorio/image.png" type="image/x-icon">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            navy: '#0b132b',
+                            gold: '#d4af37',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --primary-color: #16a34a;
+            --primary-dark: #15803d;
+            --accent-color: #0b132b;
+            --bg-light: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Header */
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 16px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo img {
+            height: 50px;
+            object-fit: contain;
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 16px;
+        }
+
+        /* Product Section */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+        @media (min-width: 860px) {
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+            }
+        }
+        .product-image-box {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 350px;
+        }
+        .product-image-box img {
+            max-height: 320px;
+            width: 100%;
+            object-fit: contain;
+        }
+        .product-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent-color);
+            line-height: 1.3;
+        }
+        .rating-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+        .stars {
+            color: #fbbf24;
+            font-size: 11px;
+        }
+        .price {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-top: 12px;
+        }
+        .stock-alert {
+            margin-top: 15px;
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            color: #991b1b;
+            padding: 10px 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .buy-btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: var(--radius);
+            font-size: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(22, 163, 74, 0.3);
+            transition: background 0.2s, transform 0.1s;
+        }
+        .buy-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Sales Copy Box */
+        .sales-copy-section {
+            margin-top: 40px;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 16px;
+            padding: 30px;
+        }
+        .sales-copy-section h2 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #92400e;
+            margin-bottom: 15px;
+        }
+        .sales-copy-section p {
+            font-size: 14px;
+            color: #78350f;
+            margin-bottom: 12px;
+        }
+        .features-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        .features-list li {
+            font-size: 14px;
+            color: #78350f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .features-list li i {
+            color: var(--primary-color);
+            margin-top: 3px;
+        }
+
+        /* Modal de Checkout */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 15px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-card {
+            background: white;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-card {
+            transform: translateY(0);
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+        .close-modal:hover {
+            color: var(--text-main);
+        }
+        .modal-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+        .modal-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        /* Formulário */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        @media (min-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        label {
+            display: block;
+            font-size: 11px;
+            font-weight: bold;
+            color: var(--text-main);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+        }
+
+        /* Resumo do Pedido */
+        .order-summary {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-top: 20px;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--accent-color);
+            border-top: 1px solid var(--border-color);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .summary-total span:last-child {
+            color: var(--primary-color);
+        }
+
+        /* Botões do Modal */
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+        .btn-cancel {
+            background: white;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-submit {
+            background-color: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            border-radius: var(--radius);
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .btn-submit:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Toast */
+        #toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 13px;
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(-100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        #toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="bg-brand-navy text-white text-xs py-3 px-4 border-b-2 border-green-600 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 text-center">
+            
+            <p class="font-extrabold tracking-wider text-sm sm:text-base flex items-center justify-center gap-2 drop-shadow-sm">
+                <span class="text-amber-400 animate-pulse">🔥</span> 
+                <span class="text-brand-50 uppercase">
+                    SEJA HOMEM DE VERDADE: DURE ATÉ 1 HORA NA CAMA!
+                </span>
+                <span class="text-amber-400 animate-pulse">🔥</span>
+            </p>
+
+            <div id="countdown-timer" class="bg-slate-900 border border-green-500/50 text-white px-4 py-2 rounded-full font-mono font-bold tracking-widest text-xs shadow-inner flex items-center gap-2 shrink-0">
+                <i class="fas fa-stopwatch text-green-400"></i> 
+                <span>OFERTA EXPIRA EM: <span id="timer-display" class="bg-green-600/20 border border-green-500 px-2.5 py-1 rounded text-amber-400 font-black text-sm">15:00</span></span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="#">
+                    <img src="https://d2gt4h1eeousrn.cloudfront.net/62563480/header-gQjqCt/e6pMXq3-200x200.webp" alt="Logótipo Green World">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="product-grid">
+            <div class="product-image-box">
+                <img src="https://ecwid-product-descr.s3.amazonaws.com/62563480/android/1749728142314" alt="Cápsulas VIG Power">
+            </div>
+
+            <div>
+                <h1 class="product-title">Vig Power Capsules (Solução Natural para Disfunção Erétil)</h1>
+                <div class="rating-box">
+                    <strong>4.8</strong>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <span style="color: var(--text-muted); font-size: 12px;">(+12.000 clientes satisfeitos)</span>
+                </div>
+                <div class="price">KSh 3.850</div>
+                <div class="stock-alert">
+                    <i class="fas fa-fire"></i> ALERTA: Stock Limitado - Encomende já!
+                </div>
+                <button onclick="toggleCheckoutModal(true)" class="buy-btn">
+                    <i class="fas fa-shopping-cart"></i> Encomendar Agora
+                </button>
+            </div>
+        </div>
+
+        <!-- Sales Copy Section -->
+        <div class="sales-copy-section">
+            <h2>🚀 O Segredo para o Máximo Desempenho e Confiança</h2>
+            <p><strong>Boas Notícias:</strong> Com este suplemento natural, os homens recuperam o controlo total, prolongando o tempo e melhorando a qualidade das relações sem efeitos secundários indesejados.</p>
+            <p>Desenvolvido com extratos de ervas medicinais asiáticas e tropicais rigorosamente selecionadas, o Vig Power revitaliza a energia vital e apoia a saúde masculina a longo prazo.</p>
+
+            <ul class="features-list">
+                <li><i class="fas fa-check-circle"></i> Promove ereções mais fortes e duradouras.</li>
+                <li><i class="fas fa-check-circle"></i> Ajuda a tratar a disfunção erétil e o controlo da ejaculação precoce.</li>
+                <li><i class="fas fa-check-circle"></i> Aumenta os níveis naturais de testosterona e libido.</li>
+                <li><i class="fas fa-check-circle"></i> Contribui para a limpeza dos rins e suporte da próstata.</li>
+                <li><i class="fas fa-check-circle"></i> Produto 100% natural, sem químicos nocivos e certificado em mais de 50 países.</li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Modal de Checkout / Encomenda -->
+    <!-- Modal de Checkout / Encomenda -->
+    <div id="checkout-modal" class="modal-overlay">
+        <div class="modal-card bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border border-slate-100">
+            <button onclick="toggleCheckoutModal(false)" class="close-modal absolute top-5 right-5 bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 w-9 h-9 rounded-full flex items-center justify-center transition">
+                <i class="fas fa-times text-sm"></i>
+            </button>
+
+            <!-- Título do Modal -->
+            <div class="mb-6">
+                <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-2">
+                    Compra Segura via WhatsApp
+                </span>
+                <h2 class="text-xl sm:text-2xl font-black text-slate-900 flex items-center gap-2">
+                    Finalizar Encomenda 🛒
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                    Preencha os seus dados abaixo para processar o pedido rapidamente.
+                </p>
+            </div>
+
+            <form id="checkout-form" onsubmit="processCheckout(event)" class="space-y-4">
+                
+                <!-- Escolher Quantidade de Frascos -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Quantidade de Frascos</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <i class="fas fa-box text-sm"></i>
+                        </span>
+                        <select id="quantity" onchange="updateTotalPrice()" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-green-600 focus:ring-4 focus:ring-green-500/10 transition cursor-pointer">
+                            <option value="1">1 Frasco (6 Cápsulas) - KSh 3.850</option>
+                            <option value="2">2 Frascos - KSh 7.700</option>
+                            <option value="3">3 Frascos (Recomendado) - KSh 11.550</option>
+                            <option value="4">4 Frascos - KSh 15.400</option>
+                            <option value="5">5 Frascos (Super Promoção) - KSh 19.250</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Nome Completo -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Nome Completo</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <i class="fas fa-user text-sm"></i>
+                        </span>
+                        <input type="text" id="fullname" required placeholder="Digite o seu nome completo" 
+                            class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-green-600 focus:ring-4 focus:ring-green-500/10 transition">
+                    </div>
+                </div>
+
+                <!-- Endereço de Entrega -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Endereço</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <i class="fas fa-map-marker-alt text-sm"></i>
+                        </span>
+                        <input type="text" id="address" required placeholder="Rua, Número, Bairro, Cidade" 
+                            class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-green-600 focus:ring-4 focus:ring-green-500/10 transition">
+                    </div>
+                </div>
+
+                <!-- Contacto -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Contacto (Telefone / WhatsApp)</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <i class="fas fa-phone-alt text-sm"></i>
+                        </span>
+                        <input type="tel" id="contact" required placeholder="+258 84... / +254 7..." 
+                            class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-green-600 focus:ring-4 focus:ring-green-500/10 transition">
+                    </div>
+                </div>
+
+                <!-- Data e Hora (Em Duas Colunas) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Data Preferida</label>
+                        <input type="date" id="delivery-date" required 
+                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-green-600 focus:ring-4 focus:ring-green-500/10 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Hora Preferida</label>
+                        <input type="time" id="delivery-time" required 
+                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-green-600 focus:ring-4 focus:ring-green-500/10 transition">
+                    </div>
+                </div>
+
+                <!-- Resumo do Pedido Dinâmico -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mt-4">
+                    <div class="flex justify-between items-center text-xs font-medium text-slate-600 mb-2">
+                        <span id="summary-item-text">Vig Power Capsules (1 Frasco)</span>
+                        <span id="summary-item-price" class="font-bold text-slate-900">KSh 3.850</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm font-extrabold text-slate-900 border-t border-slate-200 pt-2 mt-2">
+                        <span>Total a Pagar:</span>
+                        <span id="summary-total-price" class="text-green-600 text-base">KSh 3.850</span>
+                    </div>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-100 mt-6">
+                    <button type="button" onclick="toggleCheckoutModal(false)" class="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 text-xs font-bold uppercase transition">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-green-600 hover:bg-green-700 text-white text-xs font-black uppercase tracking-wider shadow-lg shadow-green-600/30 transition flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-base"></i> Enviar Encomenda
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast">
+        <i class="fas fa-check-circle" style="color: #4ade80; font-size: 16px;"></i>
+        <span id="toast-message">A redirecionar para o WhatsApp...</span>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleCheckoutModal(show) {
+            const modal = document.getElementById('checkout-modal');
+            if (show) {
+                modal.classList.add('active');
+            } else {
+                modal.classList.remove('active');
+            }
+        }
+
+function processCheckout(event) {
+            event.preventDefault();
+            
+            const fullname = document.getElementById('fullname').value;
+            const address = document.getElementById('address').value;
+            const contact = document.getElementById('contact').value;
+            const date = document.getElementById('delivery-date').value;
+            const time = document.getElementById('delivery-time').value;
+
+            // Número do WhatsApp fornecido
+            const whatsappNumber = "258833741968";
+
+            // Montar a mensagem formatada para o WhatsApp sem os asteriscos
+            const message = "Nova Encomenda - Vig Power Capsules\n\n" +
+                            "Nome: " + fullname + "\n" +
+                            "Endereco: " + address + "\n" +
+                            "Contacto: " + contact + "\n" +
+                            "Data de Entrega: " + date + "\n" +
+                            "Hora de Entrega: " + time + "\n" +
+                            "Total: KSh 3.850\n\n" +
+                            "Gostaria de confirmar esta encomenda!";
+
+            // Codificação universal para URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = "https://wa.me/" + whatsappNumber + "?text=" + encodedMessage;
+
+            toggleCheckoutModal(false);
+            showToast("A redirecionar para o WhatsApp...");
+
+            // Abrir o WhatsApp após fechar o modal
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+                document.getElementById('checkout-form').reset();
+            }, 1000);
+        }
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.innerText = message;
+
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('checkout-modal');
+            if (event.target === modal) {
+                toggleCheckoutModal(false);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Define 15 minutos em segundos (900 segundos)
+            let totalSeconds = 15 * 60; 
+
+            const timerDisplay = document.getElementById('timer-display');
+            if (!timerDisplay) return;
+
+            const countdownInterval = setInterval(() => {
+                if (totalSeconds <= 0) {
+                    clearInterval(countdownInterval);
+                    timerDisplay.textContent = "00:00";
+                    return;
+                }
+
+                totalSeconds--;
+
+                let minutes = Math.floor(totalSeconds / 60);
+                let seconds = totalSeconds % 60;
+
+                // Formata rigorosamente para MM:SS
+                timerDisplay.textContent = 
+                    String(minutes).padStart(2, '0') + ":" + 
+                    String(seconds).padStart(2, '0');
+            }, 1000);
+        });
+
+
+
+
+
+        const PRICE_PER_UNIT = 3850;
+
+        function updateTotalPrice() {
+            const quantitySelect = document.getElementById('quantity');
+            if (!quantitySelect) return;
+
+            const quantity = parseInt(quantitySelect.value) || 1;
+            const total = quantity * PRICE_PER_UNIT;
+            
+            // Formatar número com separador de milhar (ex: 11.550)
+            const formattedTotal = total.toLocaleString('en-US').replace(/,/g, '.');
+
+            document.getElementById('summary-item-text').innerText = `Vig Power Capsules (${quantity} Frasco${quantity > 1 ? 's' : ''})`;
+            document.getElementById('summary-item-price').innerText = `KSh ${formattedTotal}`;
+            document.getElementById('summary-total-price').innerText = `KSh ${formattedTotal}`;
+        }
+
+        function toggleCheckoutModal(show) {
+            const modal = document.getElementById('checkout-modal');
+            if (show) {
+                updateTotalPrice(); // Atualiza ao abrir o modal
+                modal.classList.add('active');
+            } else {
+                modal.classList.remove('active');
+            }
+        }
+
+        function processCheckout(event) {
+            event.preventDefault();
+            
+            const quantity = document.getElementById('quantity').value;
+            const fullname = document.getElementById('fullname').value;
+            const address = document.getElementById('address').value;
+            const contact = document.getElementById('contact').value;
+            const date = document.getElementById('delivery-date').value;
+            const time = document.getElementById('delivery-time').value;
+
+            const totalValue = parseInt(quantity) * PRICE_PER_UNIT;
+            const formattedTotal = totalValue.toLocaleString('en-US').replace(/,/g, '.');
+
+            // Número do WhatsApp fornecido
+            const whatsappNumber = "258833741968";
+
+            // Montar a mensagem formatada para o WhatsApp
+            const message = "Nova Encomenda - Vig Power Capsules\n\n" +
+                            "Quantidade: " + quantity + " Frasco(s)\n" +
+                            "Nome: " + fullname + "\n" +
+                            "Endereco: " + address + "\n" +
+                            "Contacto: " + contact + "\n" +
+                            "Data de Entrega: " + date + "\n" +
+                            "Hora de Entrega: " + time + "\n" +
+                            "Total: KSh " + formattedTotal + "\n\n" +
+                            "Gostaria de confirmar esta encomenda!";
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = "https://wa.me/" + whatsappNumber + "?text=" + encodedMessage;
+
+            toggleCheckoutModal(false);
+            showToast("A redirecionar para o WhatsApp...");
+
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+                document.getElementById('checkout-form').reset();
+                updateTotalPrice(); // Repõe os valores iniciais
+            }, 1000);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.innerText = message;
+
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('checkout-modal');
+            if (event.target === modal) {
+                toggleCheckoutModal(false);
+            }
+        }
+
+        // Adiciona o listener para garantir que funciona ao alterar o seletor
+        document.addEventListener("DOMContentLoaded", function () {
+            const quantitySelect = document.getElementById('quantity');
+            if (quantitySelect) {
+                quantitySelect.addEventListener('change', updateTotalPrice);
+            }
+
+            // Cronómetro regressivo de 15 minutos
+            let totalSeconds = 15 * 60; 
+            const timerDisplay = document.getElementById('timer-display');
+            if (!timerDisplay) return;
+
+            const countdownInterval = setInterval(() => {
+                if (totalSeconds <= 0) {
+                    clearInterval(countdownInterval);
+                    timerDisplay.textContent = "00:00";
+                    return;
+                }
+
+                totalSeconds--;
+
+                let minutes = Math.floor(totalSeconds / 60);
+                let seconds = totalSeconds % 60;
+
+                timerDisplay.textContent = 
+                    String(minutes).padStart(2, '0') + ":" + 
+                    String(seconds).padStart(2, '0');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

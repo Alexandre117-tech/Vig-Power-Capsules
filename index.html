@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIG Power Capsules - Green World</title>
+    <link rel="shortcut icon" href="./acessorio/image.png" type="image/x-icon">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            navy: '#0b132b',
+                            gold: '#d4af37',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+/* Oculta a barra de rolagem horizontal mantendo o toque/scroll suave */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    /* Efeito de transição suave (fade) para a imagem principal */
+    #main-product-img {
+        transition: opacity 0.4s ease-in-out;
+    }
+    .fade-out {
+        opacity: 0;
+    }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<!-- Top Announcement Bar (Identidade Visual Green World) -->
+    <div class="bg-brand-navy text-white text-xs py-3 px-4 border-b-2 border-green-600 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 text-center">
+            
+            <!-- Mensagem Chamativa Alinhada à Identidade (Verde/Dourado) -->
+            <p class="font-extrabold tracking-wider text-sm sm:text-base flex items-center justify-center gap-2 drop-shadow-sm">
+                <span class="text-amber-400 animate-pulse">🔥</span> 
+                <span class="text-brand-50 uppercase">
+                    SEJA HOMEM DE VERDADE: DURE ATÉ 1 HORA NA CAMA!
+                </span>
+                <span class="text-amber-400 animate-pulse">🔥</span>
+            </p>
+
+            <!-- Cronómetro Regressivo em Segundos (Cores da Marca: Verde e Dourado) -->
+            <div id="countdown-timer" class="bg-slate-900 border border-green-500/50 text-white px-4 py-2 rounded-full font-mono font-bold tracking-widest text-xs shadow-inner flex items-center gap-2 shrink-0">
+                <i class="fas fa-stopwatch text-green-400"></i> 
+                <span>OFERTA EXPIRA EM: <span id="timer-display" class="bg-green-600/20 border border-green-500 px-2.5 py-1 rounded text-amber-400 font-black text-sm">15:00</span></span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Minimal Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-center items-center">
+            <a href="#">
+                <img id="header-logo-img" src="https://d2gt4h1eeousrn.cloudfront.net/62563480/header-gQjqCt/e6pMXq3-200x200.webp" alt="Green World Logo" class="h-12 w-auto object-contain">
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Hero / Product Box -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+            
+            <!-- LEFT COLUMN: Product Images -->
+     <div class="lg:col-span-6 flex flex-col items-center">
+                <!-- Imagem Principal -->
+                <div class="w-full bg-slate-50 border border-slate-200  overflow-hidden flex items-center justify-center aspect-square shadow-xs">
+                    <img id="main-product-img" src="./acessorio/gulera.jpeg" class="w-full h-full object-cover transition-all duration-300" alt="Cápsulas Vig Power">
+                </div>
+
+                <!-- Galeria com Seletor de País e Navegação -->
+                <div class="flex items-center gap-2 mt-4 w-full">
+                    
+     
+
+                    <!-- Seta Esquerda -->
+                    <button onclick="scrollThumbnails(-1)" class="shrink-0 text-slate-400 hover:text-slate-700 p-1 transition">
+                        <i class="fas fa-chevron-left text-sm"></i>
+                    </button>
+
+                    <!-- Lista de Miniaturas (Thumbnails) -->
+                    <div id="thumbnail-container" class="flex gap-2 overflow-x-auto scroll-smooth py-1 px-0.5 no-scrollbar w-full">
+                        
+                        <!-- Thumbnail 1 (Ativa) -->
+                        <button onclick="switchMainImage(this)" class="thumb-btn shrink-0 w-16 h-16 rounded-xl border-2 border-slate-900 bg-white p-1 shadow-xs transition overflow-hidden">
+                            <img src="./acessorio/gulera.jpeg" class="w-full h-full object-contain rounded-lg">
+                        </button>
+
+                        <!-- Thumbnail 2 -->
+                        <button onclick="switchMainImage(this)" class="thumb-btn shrink-0 w-16 h-16 rounded-xl border border-slate-200 hover:border-slate-400 bg-white p-1 shadow-xs transition overflow-hidden">
+                            <img src="./acessorio/viguerur1.png" class="w-full h-full object-contain rounded-lg">
+                        </button>
+
+                        <!-- Thumbnail 3 -->
+                        <button onclick="switchMainImage(this)" class="thumb-btn shrink-0 w-16 h-16 rounded-xl border border-slate-200 hover:border-slate-400 bg-white p-1 shadow-xs transition overflow-hidden">
+                            <img src="./acessorio/carrosselprincipal/Design sem nome (3).png" class="w-full h-full object-contain rounded-lg">
+                        </button>
+
+                        <!-- Thumbnail 4 (Nova) -->
+                        <button onclick="switchMainImage(this)" class="thumb-btn shrink-0 w-16 h-16 rounded-xl border border-slate-200 hover:border-slate-400 bg-white p-1 shadow-xs transition overflow-hidden">
+                            <img src="./acessorio/carrosselprincipal/viguer1.jpg" class="w-full h-full object-contain rounded-lg">
+                        </button>
+
+                        <!-- Thumbnail 5 (Nova) -->
+                        <button onclick="switchMainImage(this)" class="thumb-btn shrink-0 w-16 h-16 rounded-xl border border-slate-200 hover:border-slate-400 bg-white p-1 shadow-xs transition overflow-hidden">
+                            <img src="./acessorio/carrosselprincipal/viguer2.jpg" class="w-full h-full object-contain rounded-lg">
+                        </button>
+
+                    </div>
+
+                    <!-- Seta Direita -->
+                    <button onclick="scrollThumbnails(1)" class="shrink-0 text-slate-400 hover:text-slate-700 p-1 transition">
+                        <i class="fas fa-chevron-right text-sm"></i>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Details & Offer Selector -->
+            <div class="lg:col-span-6 flex flex-col justify-between">
+                <div>
+                    <!-- Ratings -->
+                    <div class="flex items-center gap-2 text-sm">
+                        <div class="flex text-amber-400 text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="font-bold text-slate-700">4.8 / 5.0</span>
+                        <span class="text-slate-400">|</span>
+                        <span class="text-slate-600 text-xs">Mais de 12.319 Clientes Satisfeitos</span>
+                    </div>
+
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight mt-2">
+                        Vig Power Capsules (Solução Natural)
+                    </h1>
+
+                    <!-- Key Benefits Bullet points -->
+                    <div class="mt-4 space-y-2 text-xs sm:text-sm text-slate-700 font-medium">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-green-600"></i>
+                            <span>Ereções mais fortes e aumento da vitalidade</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-green-600"></i>
+                            <span>Trata a disfunção erétil e ejaculações precoces</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-green-600"></i>
+                            <span>Fórmula 100% natural, sem produtos químicos e sem efeitos colaterais</span>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="flex items-center my-4">
+                        <div class="flex-grow border-t border-slate-200"></div>
+                        <span class="mx-3 text-[11px] font-bold text-red-600 uppercase tracking-wide">🔥 Poucas Unidades - Vendendo Rápido</span>
+                        <div class="flex-grow border-t border-slate-200"></div>
+                    </div>
+
+                    <!-- Package Selector -->
+<div class="space-y-3">
+    <!-- Option 1 -->
+    <label class="package-option block border-2 border-slate-200 hover:border-green-500 bg-white rounded-xl p-3.5 cursor-pointer relative shadow-sm transition">
+        <input type="radio" name="package" class="hidden" onchange="selectPackage(this)">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="./acessorio/3.png" class="w-16 h-16 object-contain bg-slate-50 rounded p-1 border border-slate-200">
+                <div>
+                    <div  id="encom" class="font-bold text-slate-900 text-sm">1 Caixinha (6 cápsulas)</div>
+                    <div class="text-xs text-slate-500">1 cápsula por semana</div>
+                </div>
+            </div>
+            <div class="text-right">
+                <div class="font-extrabold text-slate-900 text-base">KSh 3,850.00</div>
+                <div class="text-xs text-slate-400 line-through">KSh 5,174.95</div>
+            </div>
+        </div>
+    </label>
+
+    <!-- Option 2 (Popular) -->
+    <label class="package-option block border-2 border-green-600 bg-green-50/30 rounded-xl p-3.5 cursor-pointer relative shadow-sm transition">
+        <span class="absolute -top-2.5 right-4 bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Mais Popular</span>
+        <input type="radio" name="package" checked class="hidden" onchange="selectPackage(this)">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="./acessorio/2.png" class="w-16 h-16 object-contain bg-slate-50 rounded p-1 border border-slate-200">
+                <div>
+                    <div class="font-bold text-slate-900 text-sm">Leve 2, Ganhe 1 GRÁTIS</div>
+                    <span class="inline-block bg-green-100 text-green-800 text-[10px] font-bold px-1.5 py-0.5 rounded">Frete GRÁTIS</span>
+                </div>
+            </div>
+            <div class="text-right">
+                <div class="font-extrabold text-slate-900 text-base">KSh 7,700.00</div>
+                <div class="text-xs text-slate-400 line-through">KSh 15,523.95</div>
+            </div>
+        </div>
+    </label>
+
+    <!-- Option 3 -->
+    <label class="package-option block border-2 border-slate-200 hover:border-green-500 bg-white rounded-xl p-3.5 cursor-pointer relative shadow-sm transition">
+        <span class="absolute -top-2.5 right-4 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Melhor Valor</span>
+        <input type="radio" name="package" class="hidden" onchange="selectPackage(this)">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="./acessorio/1.png" class="w-16 h-16 object-contain bg-slate-50 rounded p-1 border border-slate-200">
+                <div>
+                    <div class="font-bold text-slate-900 text-sm">Leve 3, Ganhe 3 Brindes</div>
+                    <span class="inline-block bg-green-100 text-green-800 text-[10px] font-bold px-1.5 py-0.5 rounded">Frete GRÁTIS</span>
+                </div>
+            </div>
+            <div class="text-right">
+                <div class="font-extrabold text-slate-900 text-base">KSh 11,550.00</div>
+                <div class="text-xs text-slate-400 line-through">KSh 31,047.95</div>
+            </div>
+        </div>
+    </label>
+</div>
+
+                    <!-- Call to Action Button -->
+                    <div class="mt-6">
+                        <button onclick="window.location.href='form.html'" class="w-full bg-green-600 hover:bg-green-700 text-white font-extrabold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2 text-base uppercase tracking-wider">
+                            <i class="fas fa-shopping-cart"></i> Encomendar Agora
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+<!-- Feature Highlights & Guarantees -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-b border-slate-200 py-6">
+            <div class="flex items-center gap-4 p-3 bg-white rounded-xl border border-slate-100 shadow-xs">
+                <div class="w-12 h-12 rounded-full bg-green-50 text-green-600 flex items-center justify-center shrink-0 text-xl">
+                    <i class="fas fa-truck-fast"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 text-sm">Envio Rápido e Discreto</h4>
+                    <p class="text-xs text-slate-500">Entrega rápida na sua porta com total privacidade.</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4 p-3 bg-white rounded-xl border border-slate-100 shadow-xs">
+                <div class="w-12 h-12 rounded-full bg-green-50 text-green-600 flex items-center justify-center shrink-0 text-xl">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 text-sm">Garantia de Qualidade</h4>
+                    <p class="text-xs text-slate-500">Fórmula 100% natural, segura e certificada.</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4 p-3 bg-white rounded-xl border border-slate-100 shadow-xs">
+                <div class="w-12 h-12 rounded-full bg-green-50 text-green-600 flex items-center justify-center shrink-0 text-xl">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 text-sm">Apoio Personalizado</h4>
+                    <p class="text-xs text-slate-500">Suporte ao cliente disponível para esclarecer dúvidas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accordion Info Section -->
+        <div class="mt-6 bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-xs divide-y divide-slate-100">
+            <details class="group py-3 cursor-pointer">
+                <summary class="flex justify-between items-center font-bold text-slate-800 text-sm sm:text-base list-none">
+                    <span class="flex items-center gap-2"><i class="fas fa-circle-question text-green-600"></i> Como Funciona?</span>
+                    <span class="transition group-open:rotate-180 text-slate-400"><i class="fas fa-chevron-down"></i></span>
+                </summary>
+                <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                    A fórmula do Vig Power atua diretamente na circulação sanguínea e no equilíbrio hormonal, promovendo o fortalecimento dos tecidos do pénis e o aumento da resistência física de forma natural e sem efeitos colaterais.
+                </p>
+            </details>
+
+            <details class="group py-3 cursor-pointer">
+                <summary class="flex justify-between items-center font-bold text-slate-800 text-sm sm:text-base list-none">
+                    <span class="flex items-center gap-2"><i class="fas fa-box-open text-green-600"></i> Envio & Entrega</span>
+                    <span class="transition group-open:rotate-180 text-slate-400"><i class="fas fa-chevron-down"></i></span>
+                </summary>
+                <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                    As encomendas são processadas no próprio dia. A embalagem é totalmente discreta, sem qualquer menção ao conteúdo do produto no exterior.
+                </p>
+            </details>
+
+            <details class="group py-3 cursor-pointer">
+                <summary class="flex justify-between items-center font-bold text-slate-800 text-sm sm:text-base list-none">
+                    <span class="flex items-center gap-2"><i class="fas fa-award text-green-600"></i> Satisfação Garantida</span>
+                    <span class="transition group-open:rotate-180 text-slate-400"><i class="fas fa-chevron-down"></i></span>
+                </summary>
+                <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                    Garantimos a autenticidade e alta qualidade de todos os suplementos originais Green World distribuídos na nossa loja oficial.
+                </p>
+            </details>
+        </div>
+
+        <!-- Customer Testimonials Cards (Com fotos no topo acima do texto) -->
+        <div class="mt-12">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Resultados Reais de Quem Usa</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">Veja o depoimento de clientes satisfeitos com os resultados do suplemento</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between">
+                    <div>
+                        <!-- Imagem do cliente no topo -->
+                        <div class="relative w-full h-64 bg-slate-100 overflow-hidden">
+                            <img src="./acessorio/Edição de parede.png" alt="Cliente Satisfeito" class="w-full h-full object-cover">
+                            <div class="absolute bottom-3 right-3 bg-blue-600 text-white rounded-full p-2 w-8 h-8 flex items-center justify-center text-xs shadow-md">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                        <!-- Comentário / Avaliação abaixo da imagem -->
+                        <div class="p-6 text-center">
+                            <div class="flex justify-center text-amber-400 text-xs mb-2">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">"Sinto-me um Novo Homem!"</h3>
+                            <p class="text-xs sm:text-sm text-slate-600 italic mt-3 leading-relaxed">
+                                "Estava a lidar com baixa energia há anos, mas após poucas semanas a usar o Vig Power, notei uma diferença enorme. A minha energia e apetite sexual voltaram ao máximo!"
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 text-center border-t border-slate-100 text-xs font-semibold text-slate-500">
+                        — Carlos M., 42 anos
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between">
+                    <div>
+                        <!-- Imagem do cliente no topo -->
+                        <div class="relative w-full h-64 bg-slate-100 overflow-hidden">
+                            <img src="./acessorio/Enquadrar pessoa.png" alt="Cliente Satisfeito" class="w-full h-full object-cover">
+                            <div class="absolute bottom-3 right-3 bg-blue-600 text-white rounded-full p-2 w-8 h-8 flex items-center justify-center text-xs shadow-md">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                        <!-- Comentário / Avaliação abaixo da imagem -->
+                        <div class="p-6 text-center">
+                            <div class="flex justify-center text-amber-400 text-xs mb-2">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">"Voltei a sentir-me mais jovem"</h3>
+                            <p class="text-xs sm:text-sm text-slate-600 italic mt-3 leading-relaxed">
+                                "Aos 40 anos já sentia falta de resistência e foco. Após duas semanas, voltei a sentir-me como antes. Tenho mais disposição no dia a dia e nos momentos íntimos!"
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 text-center border-t border-slate-100 text-xs font-semibold text-slate-500">
+                        — António S., 48 anos
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between">
+                    <div>
+                        <!-- Imagem do cliente no topo -->
+                        <div class="relative w-full h-64 bg-slate-100 overflow-hidden">
+                            <img src="./acessorio/vovo.png" alt="Cliente Satisfeito" class="w-full h-full object-cover">
+                            <div class="absolute bottom-3 right-3 bg-blue-600 text-white rounded-full p-2 w-8 h-8 flex items-center justify-center text-xs shadow-md">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                        <!-- Comentário / Avaliação abaixo da imagem -->
+                        <div class="p-6 text-center">
+                            <div class="flex justify-center text-amber-400 text-xs mb-2">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">"Resultados Visíveis em Poucos Dias"</h3>
+                            <p class="text-xs sm:text-sm text-slate-600 italic mt-3 leading-relaxed">
+                                "Com apenas 4 dias de uso, notei uma melhoria enorme na minha circulação e firmeza. A minha stamina está excelente para acompanhar o ritmo no quarto!"
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 text-center border-t border-slate-100 text-xs font-semibold text-slate-500">
+                        — Fernando R., 52 anos
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <!-- Sales Copy & Benefits Section (Informações Atualizadas) -->
+        <div class="mt-12 space-y-8 max-w-3xl mx-auto">
+            
+            <div class="bg-amber-400 text-slate-900 font-black text-center py-3 px-4 rounded-xl shadow-sm text-sm sm:text-base uppercase tracking-wide">
+                🎁 Vig Power Natural Caps tem ajudado homens a passar de 30 segundos para até 1 hora sem parar!
+            </div>
+
+            <!-- Banners -->
+            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                <img src="./acessorio/detalhes1.png" alt="Product Details Banner" class="w-full h-auto">
+            </div>
+            
+            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                <img src="https://ecwid-product-descr.s3.amazonaws.com/62563480/android/1749728142314" alt="Promotional Banner" class="w-full h-auto">
+            </div>
+
+            <!-- Detailed Sales Copy Card -->
+            <div class="bg-amber-50/90 border border-amber-200 p-6 sm:p-8 rounded-2xl text-slate-800 space-y-6 shadow-sm">
+                
+                <div>
+                    <h3 class="font-bold text-amber-900 text-base sm:text-lg flex items-center gap-2">
+                        🎉 Boas Notícias!
+                    </h3>
+                    <p class="mt-2 text-xs sm:text-sm text-slate-800 leading-relaxed font-semibold">
+                        💪💪💪 Finalmente, com este suplemento, os homens agora podem marcar 2 a 3 gols em uma única partida no quarto com a senhora!
+                    </p>
+                    <p class="mt-2 text-xs sm:text-sm text-slate-800 leading-relaxed font-semibold">
+                        💪💪 Restaure o orgulho e a confiança! Resolva problemas de ereção de longa data... Tenha uma ereção duradoura com este novo suplemento para saúde sem efeitos colaterais e com resultados a longo prazo.
+                    </p>
+                </div>
+
+                <div class="border-t border-amber-200 pt-4">
+                    <p class="font-bold text-slate-900 text-sm mb-3">📌 Preço e Apresentação:</p>
+                    <div class="bg-white p-4 rounded-xl border border-amber-200 text-xs sm:text-sm space-y-1">
+                        <p class="font-bold text-green-700 text-base">KSh 3,850</p>
+                        <p class="font-semibold text-slate-800">Vig Power (6 cápsulas)</p>
+                        <p class="text-slate-600 italic">Natural e eficaz, com resultados a longo prazo.</p>
+                        <p class="font-medium text-slate-700 pt-1"><strong>Dosagem:</strong> 1 tampa/cápsula por semana...</p>
+                    </div>
+                </div>
+
+                <div class="border-t border-amber-200 pt-4">
+                    <p class="font-bold text-slate-900 text-sm mb-3">Principais Características e Benefícios:</p>
+                    <ul class="space-y-2.5 text-xs sm:text-sm font-medium">
+                        <li class="flex items-start gap-2">
+                            <span class="text-amber-600 font-bold">🥇</span>
+                            <span>Promove ereções mais fortes e aumenta o tamanho do pênis.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-amber-600 font-bold">🥇</span>
+                            <span>Ajuda a tratar a disfunção erétil e a ejaculação precoce com sucesso.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-amber-600 font-bold">🥇</span>
+                            <span>Aumenta os níveis de testosterona e libido.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-amber-600 font-bold">🥇</span>
+                            <span>Limpa os rins e a próstata.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-amber-600 font-bold">🥇</span>
+                            <span>Aumenta a contagem e a motilidade dos espermatozoides.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-amber-600 font-bold">🥇</span>
+                            <span>Certificado em mais de 50 países.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-600 font-bold">🌿</span>
+                            <span class="font-bold text-green-800">Sem produtos químicos (100% Natural).</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border-t border-amber-200 pt-4">
+                    <p class="font-bold text-slate-900 text-xs sm:text-sm">Países Produtores:</p>
+                    <p class="text-xs sm:text-sm font-medium text-slate-700 mt-1">✈️ EUA, China e Canadá</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl border border-amber-200 text-xs text-slate-700 leading-relaxed shadow-xs">
+                    <strong class="text-slate-900 font-bold block mb-1">CÁPSULA GREEN WORLD VIGPOWER</strong>
+                    Green World Vigpower conserva a energia vital e fortalece a capacidade sexual, revitalizando os rins para alcançar um desempenho sexual eficaz e retardar a ejaculação precoce. A cápsula Green World Vigpower para homens pode melhorar a vitalidade sexual, a resistência, a qualidade do esperma e a fertilidade. Também auxilia no aumento peniano.
+                </div>
+
+            </div>
+
+<!-- Secção de Depoimentos do WhatsApp (Carrossel Horizontal de Imagens Grandes) -->
+<div class="mt-16 max-w-7xl mx-auto px-4">
+    <!-- Cabeçalho -->
+    <div class="text-center mb-8">
+        <span class="bg-green-100 text-green-700 text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-wider inline-block border border-green-200 shadow-xs">
+            Provas Sociais Reais
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-3 flex items-center justify-center gap-2">
+            O Que Nossos Clientes Dizem no WhatsApp <span class="text-2xl">💬</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-2 font-medium">
+            Veja conversas reais de clientes satisfeitos com os resultados do Vig Power
+        </p>
+    </div>
+
+    <!-- Container do Carrossel com Setas -->
+    <div class="relative group">
+        
+        <!-- Botão Esquerda -->
+        <button onclick="scrollWhatsappCarousel(-1)" class="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-slate-100 text-slate-800 w-10 h-10 rounded-full shadow-xl flex items-center justify-center border border-slate-200 transition">
+            <i class="fas fa-chevron-left text-sm"></i>
+        </button>
+
+        <!-- Lista de Imagens em Carrossel (Scroll Horizontal) -->
+        <div id="whatsapp-carousel" class="flex gap-6 overflow-x-auto scroll-smooth py-4 px-2 no-scrollbar snap-x snap-mandatory">
+            
+            <!-- Imagem 1 -->
+            <div class="w-[280px] sm:w-[320px] shrink-0 snap-center bg-white p-3 rounded-2xl shadow-lg border border-slate-200 flex flex-col items-center hover:shadow-xl transition duration-300">
+                <div class="w-full bg-slate-100 rounded-xl overflow-hidden aspect-[9/16] relative shadow-inner">
+                    <img src="./acessorio/chatpick/Gemini_Generated_Image_1kfzbi1kfzbi1kfz.jpg" alt="Print WhatsApp 1" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition duration-300" onclick="openImageModal(this.src)">
+                </div>
+                <span class="text-xs text-emerald-600 font-bold mt-3 flex items-center gap-1.5">
+                    <i class="fas fa-check-circle"></i> Cliente Verificado
+                </span>
+            </div>
+
+            <!-- Imagem 2 -->
+            <div class="w-[280px] sm:w-[320px] shrink-0 snap-center bg-white p-3 rounded-2xl shadow-lg border border-slate-200 flex flex-col items-center hover:shadow-xl transition duration-300">
+                <div class="w-full bg-slate-100 rounded-xl overflow-hidden aspect-[9/16] relative shadow-inner">
+                    <img src="./acessorio/chatpick/Gemini_Generated_Image_t7erg8t7erg8t7er.jpg" alt="Print WhatsApp 2" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition duration-300" onclick="openImageModal(this.src)">
+                </div>
+                <span class="text-xs text-emerald-600 font-bold mt-3 flex items-center gap-1.5">
+                    <i class="fas fa-check-circle"></i> Cliente Verificado
+                </span>
+            </div>
+
+            <!-- Imagem 3 -->
+            <div class="w-[280px] sm:w-[320px] shrink-0 snap-center bg-white p-3 rounded-2xl shadow-lg border border-slate-200 flex flex-col items-center hover:shadow-xl transition duration-300">
+                <div class="w-full bg-slate-100 rounded-xl overflow-hidden aspect-[9/16] relative shadow-inner">
+                    <img src="./acessorio/chatpick/Gemini_Generated_Image_vmnx1evmnx1evmnx.jpg" alt="Print WhatsApp 3" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition duration-300" onclick="openImageModal(this.src)">
+                </div>
+                <span class="text-xs text-emerald-600 font-bold mt-3 flex items-center gap-1.5">
+                    <i class="fas fa-check-circle"></i> Cliente Verificado
+                </span>
+            </div>
+
+            <!-- Imagem 4 -->
+            <div class="w-[280px] sm:w-[320px] shrink-0 snap-center bg-white p-3 rounded-2xl shadow-lg border border-slate-200 flex flex-col items-center hover:shadow-xl transition duration-300">
+                <div class="w-full bg-slate-100 rounded-xl overflow-hidden aspect-[9/16] relative shadow-inner">
+                    <img src="./acessorio/chatpick/Gemini_Generated_Image_yyesloyyesloyyes.jpg" alt="Print WhatsApp 4" class="w-full h-full object-cover cursor-pointer hover:scale-105 transition duration-300" onclick="openImageModal(this.src)">
+                </div>
+                <span class="text-xs text-emerald-600 font-bold mt-3 flex items-center gap-1.5">
+                    <i class="fas fa-check-circle"></i> Cliente Verificado
+                </span>
+            </div>
+
+        </div>
+
+        <!-- Botão Direita -->
+        <button onclick="scrollWhatsappCarousel(1)" class="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-slate-100 text-slate-800 w-10 h-10 rounded-full shadow-xl flex items-center justify-center border border-slate-200 transition">
+            <i class="fas fa-chevron-right text-sm"></i>
+        </button>
+
+    </div>
+</div>
+
+<!-- Modal para Ampliar a Imagem ao Clicar -->
+<div id="image-modal" class="fixed inset-0 bg-black/85 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4 cursor-pointer" onclick="closeImageModal()">
+    <div class="relative max-w-md w-full" onclick="event.stopPropagation()">
+        <img id="modal-img" src="" class="w-full h-auto rounded-2xl shadow-2xl border-2 border-slate-700">
+        <button onclick="closeImageModal()" class="absolute -top-3 -right-3 bg-red-600 text-white rounded-full w-8 h-8 font-bold flex items-center justify-center shadow-lg hover:bg-red-700 transition">✕</button>
+    </div>
+</div>
+
+<script>
+    // Função para mover o carrossel horizontal de prints ao clicar nas setas
+    function scrollWhatsappCarousel(direction) {
+        const container = document.getElementById('whatsapp-carousel');
+        const scrollAmount = 320; // Largura aproximada de cada card mais o espaçamento
+        container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+</script>
+
+            <!-- CTA Button Mid-Page -->
+            <div class="text-center pt-4">
+                <button onclick="window.location.href='#encom'" class="w-full sm:w-auto px-10 bg-green-600 hover:bg-green-700 text-white font-extrabold py-4 rounded-xl shadow-lg hover:shadow-xl transition text-base uppercase tracking-wider">
+                    Garantir Meu Kit Agora <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+
+        </div>
+
+
+
+
+        <!-- FAQ Section (Perguntas Frequentes) -->
+        <div class="mt-16 max-w-3xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Perguntas Frequentes</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">Tire todas as suas dúvidas sobre o Vig Power Capsules</p>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-sm divide-y divide-slate-100">
+                <!-- Pergunta 1 -->
+                <details class="group py-4 cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-slate-800 text-sm sm:text-base list-none">
+                        <span class="flex items-center gap-2"><i class="fas fa-question-circle text-green-600"></i> O Vig Power tem efeitos colaterais?</span>
+                        <span class="transition group-open:rotate-180 text-slate-400"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                        Não. O Vig Power é formulado com ingredientes 100% naturais, sem produtos químicos sintéticos na sua composição, garantindo um uso seguro e sem efeitos secundários indesejados.
+                    </p>
+                </details>
+
+                <!-- Pergunta 2 -->
+                <details class="group py-4 cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-slate-800 text-sm sm:text-base list-none">
+                        <span class="flex items-center gap-2"><i class="fas fa-question-circle text-green-600"></i> Como deve ser feita a toma do produto?</span>
+                        <span class="transition group-open:rotate-180 text-slate-400"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                        A recomendação padrão de uso é de 1 cápsula por semana. Cada caixinha contém 6 cápsulas, o que garante o acompanhamento ideal para o tratamento e desempenho prolongado.
+                    </p>
+                </details>
+
+                <!-- Pergunta 3 -->
+                <details class="group py-4 cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-slate-800 text-sm sm:text-base list-none">
+                        <span class="flex items-center gap-2"><i class="fas fa-question-circle text-green-600"></i> Em quanto tempo começo a notar resultados?</span>
+                        <span class="transition group-open:rotate-180 text-slate-400"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                        Muitos utilizadores relatam melhorias significativas logo nos primeiros dias de uso, sentindo maior firmeza, circulação otimizada e maior controlo e resistência no quarto.
+                    </p>
+                </details>
+
+                <!-- Pergunta 4 -->
+                <details class="group py-4 cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-slate-800 text-sm sm:text-base list-none">
+                        <span class="flex items-center gap-2"><i class="fas fa-question-circle text-green-600"></i> A entrega é totalmente discreta?</span>
+                        <span class="transition group-open:rotate-180 text-slate-400"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                        Sim, garantimos total privacidade. A encomenda é enviada numa embalagem fechada e discreta, sem qualquer rótulo ou indicação visível do produto no exterior.
+                    </p>
+                </details>
+
+                <!-- Pergunta 5 -->
+                <details class="group py-4 cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold text-slate-800 text-sm sm:text-base list-none">
+                        <span class="flex items-center gap-2"><i class="fas fa-question-circle text-green-600"></i> O produto é original certificado?</span>
+                        <span class="transition group-open:rotate-180 text-slate-400"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                        Sim! Distribuímos exclusivamente produtos oficiais da Green World International, certificados e aprovados em dezenas de países pela sua eficácia na saúde renal, prostática e vitalidade masculina.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- Scroll to Top Button -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-4 z-30 bg-slate-800 hover:bg-slate-700 text-white p-3 rounded-full shadow-lg transition">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Clean Footer -->
+    <footer class="bg-slate-900 text-slate-400 mt-20 py-10 text-xs border-t border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 text-center space-y-4">
+            <p>© 1994-2026 Green World International Products. Todos os direitos reservados.</p>
+            <p class="text-[10px] text-slate-500 max-w-3xl mx-auto leading-relaxed">
+                <strong>Aviso Legal:</strong> As declarações feitas sobre estes produtos não foram avaliadas por órgãos reguladores de saúde pública. Este produto não se destina a diagnosticar, tratar, curar ou prevenir qualquer doença. Consulte o seu médico antes de usar.
+            </p>
+        </div>
+    </footer>
+
+<script>
+    let autoSlideInterval;
+
+    function switchMainImage(element) {
+        const imgEl = element.querySelector('img');
+        if (!imgEl) return;
+        
+        const mainImg = document.getElementById('main-product-img');
+        const newSrc = imgEl.getAttribute('src'); // Usa o atributo direto para evitar conflitos de URL absoluta
+
+        // Efeito suave de fade out/in
+        mainImg.classList.add('fade-out');
+        setTimeout(() => {
+            mainImg.src = newSrc;
+            mainImg.classList.remove('fade-out');
+        }, 200);
+
+        // Atualiza a borda de destaque na miniatura selecionada
+        document.querySelectorAll('.thumb-btn').forEach(btn => {
+            btn.classList.remove('border-2', 'border-slate-900');
+            btn.classList.add('border', 'border-slate-200');
+        });
+        element.classList.remove('border', 'border-slate-200');
+        element.classList.add('border-2', 'border-slate-900');
+
+        // Opcional: Reinicia o temporizador automático quando o utilizador clica manualmente
+        resetAutoSlide();
+    }
+
+    function scrollThumbnails(direction) {
+        const container = document.getElementById('thumbnail-container');
+        const scrollAmount = 140; 
+        container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+
+    function startAutoSlide() {
+        const thumbButtons = document.querySelectorAll('.thumb-btn');
+        if (thumbButtons.length === 0) return;
+
+        let currentIndex = 0;
+
+        autoSlideInterval = setInterval(() => {
+            // Descobre qual é o índice atual baseado na miniatura com a borda ativa
+            thumbButtons.forEach((btn, idx) => {
+                if (btn.classList.contains('border-slate-900')) {
+                    currentIndex = idx;
+                }
+            });
+
+            currentIndex = (currentIndex + 1) % thumbButtons.length;
+            
+            // Simula o clique na próxima miniatura
+            thumbButtons[currentIndex].click();
+
+            // Centraliza a miniatura ativa no carrossel inferior
+            const container = document.getElementById('thumbnail-container');
+            const targetThumb = thumbButtons[currentIndex];
+            if (container && targetThumb) {
+                container.scrollTo({
+                    left: targetThumb.offsetLeft - container.offsetLeft - (container.clientWidth / 2) + (targetThumb.clientWidth / 2),
+                    behavior: 'smooth'
+                });
+            }
+        }, 4000);
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    }
+
+    // Inicializa o carrossel automático quando a página carregar
+    document.addEventListener("DOMContentLoaded", function () {
+        startAutoSlide();
+    });
+
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Define 15 minutos em segundos (900 segundos)
+        let totalSeconds = 15 * 60; 
+
+        const timerDisplay = document.getElementById('timer-display');
+        if (!timerDisplay) return;
+
+        const countdownInterval = setInterval(() => {
+            if (totalSeconds <= 0) {
+                clearInterval(countdownInterval);
+                timerDisplay.textContent = "00:00";
+                return;
+            }
+
+            totalSeconds--;
+
+            let minutes = Math.floor(totalSeconds / 60);
+            let seconds = totalSeconds % 60;
+
+            // Formata rigorosamente para MM:SS (mostrando os segundos a descer)
+            timerDisplay.textContent = 
+                String(minutes).padStart(2, '0') + ":" + 
+                String(seconds).padStart(2, '0');
+        }, 1000);
+    });
+</script>
+</body>
+</html>
